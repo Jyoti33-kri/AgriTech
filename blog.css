@@ -1,0 +1,1086 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.agritech-blog {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    padding: 2rem 1rem;
+}
+
+.blog-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.blog-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.blog-title {
+    font-size: 2.5rem;
+    color: #2c5f2d;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.blog-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    font-weight: 300;
+}
+
+/* Header Actions for Favorites */
+.header-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.theme-toggle {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 50px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.theme-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.favorites-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg,#2cc02b,#c0392b);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+}
+
+.favorites-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+    color: white;
+}
+
+.favorite-count {
+    background: white;
+    color: #e74c3c;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: bold;
+    min-width: 20px;
+    text-align: center;
+}
+
+.search-filter-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin-bottom: 3rem;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.search-bar:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+}
+
+.category-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.filter-btn {
+    padding: 0.8rem 1.5rem;
+    background: #f8f9fa;
+    border: 2px solid #e0e0e0;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    color: #333;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+    transform: translateY(-2px);
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.blog-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    opacity: 1;
+    transform: scale(1);
+    position: relative;
+     animation: fadeUp 0.4s ease forwards;
+}
+
+
+.blog-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.blog-card.hidden {
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
+    margin: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.blog-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.read-more-btn{
+    margin-top: auto;
+}
+
+.card-category {
+    display: inline-block;
+    background: #4CAF50;
+    color: white;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-transform: capitalize;
+    align-self: flex-start;
+}
+
+.card-title {
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: none;
+}
+
+.blog-card:hover {
+    box-shadow: 0 15px 25px rgb(20, 186, 42)!important;
+    transform: translateY(-8px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  height:100%;
+  justify-content: space-between;
+}
+
+.card-description {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.card-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.card-date {
+    color: #333;
+    font-size: 13px;
+}
+
+.read-more-btn {
+    background: linear-gradient(45deg, #4CAF50, #45a049);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.read-more-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+}
+
+.load-more-container {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.load-more-btn {
+    background: linear-gradient(45deg, #2c5f2d, #4CAF50);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.load-more-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(44, 95, 45, 0.4);
+}
+
+.load-more-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Favorite Button Styles */
+.favorite-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #ccc;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    z-index: 10;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.favorite-btn:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: scale(1.1);
+    color: #e74c3c;
+}
+
+.favorite-btn.active {
+    color: #e74c3c;
+    background: rgba(255, 255, 255, 1);
+}
+
+.favorite-btn.active:hover {
+    color: #c0392b;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 2% auto;
+    padding: 0;
+    border-radius: 5px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    /* overflow-y: auto;  <-- REMOVED THIS to let .modal-body handle scrolling */
+    position: relative;
+    animation: slideIn 0.3s ease;
+    display: flex; /* NEW: Helps with scrolling layout */
+    flex-direction: column;
+}
+
+.modal-header {
+    padding: 2rem;
+    border-bottom: 1px solid #eee;
+    /* position: relative; Changed from sticky to relative for better layout */
+    background: white;
+    z-index: 10;
+    border-radius: 15px 15px 0 0;
+    flex-shrink: 0; /* Prevents header from squishing */
+}
+
+.modal-title {
+    font-size: 2rem;
+    color: #2c5f2d;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.modal-category {
+    display: inline-block;
+    background: #4CAF50;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.modal-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+/* Typography for Article Content */
+.modal-text {
+    color: #333;
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+.modal-text h3 {
+    color: #2c5f2d;
+    margin: 1.5rem 0 1rem 0;
+    font-size: 1.4rem;
+}
+
+.modal-text ul {
+    margin: 1rem 0;
+    padding-left: 2rem;
+}
+
+.modal-text li {
+    margin-bottom: 0.5rem;
+}
+
+.close {
+    color: #aaa;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.3s ease;
+    background: transparent;
+    border: none;
+    position: absolute;
+    top: 35px;
+    right: 40px;
+}
+
+.close:hover,
+.close:focus {
+    color: #2c5f2d;
+}
+
+/* Modal Favorite Button */
+.modal-favorite-btn {
+    position: absolute;
+    top: 30px;
+    right: 65px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    font-size: 1.4rem;
+    color: #ccc;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    z-index: 1001;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-favorite-btn:hover {
+    background: rgba(255, 255, 255, 1);
+    color: #e74c3c;
+    transform: scale(1.1);
+}
+
+.modal-favorite-btn.active {
+    color: #e74c3c;
+    background: rgba(255, 255, 255, 1);
+}
+
+/* Favorite Notification */
+.favorite-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    z-index: 10000;
+    animation: slideInRight 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.favorite-notification-success {
+    background: linear-gradient(135deg, #2c5f2d, #1e3f1f);
+}
+
+.favorite-notification-error {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* Dark Mode Styles */
+[data-theme="dark"] {
+    --bg-primary: linear-gradient(135deg, #1a1a1a 0%, #2d3748 100%);
+    --bg-secondary: #2d3748;
+    --text-primary: #f7fafc;
+    --text-secondary: #e2e8f0;
+    --text-tertiary: #a0aec0;
+    --green-primary: #68d391;
+    --green-secondary: #48bb78;
+    --green-dark: #38a169;
+    --border-color: #4a5568;
+    --shadow-light: rgba(0,0,0,0.3);
+    --shadow-medium: rgba(0,0,0,0.5);
+    --card-bg: #2d3748;
+    --modal-bg: #2d3748;
+    --search-bg: #4a5568;
+}
+
+[data-theme="dark"] .agritech-blog {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d3748 100%);
+}
+
+[data-theme="dark"] .blog-title {
+    color: #38a169;
+}
+
+[data-theme="dark"] .blog-subtitle {
+    color: #e2e8f0;
+}
+
+[data-theme="dark"] .search-filter-section {
+    background: #2d3748;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+[data-theme="dark"] .search-bar {
+    background: #2d3748;
+    color: #f7fafc;
+    border-color: #4a5568;
+}
+
+[data-theme="dark"] .search-bar::placeholder {
+    color: #a0aec0;
+}
+
+[data-theme="dark"] .search-bar:focus {
+    border-color: #68d391;
+}
+
+[data-theme="dark"] .filter-btn {
+    background: #4a5568;
+    color: #f7fafc;
+    border-color: #4a5568;
+}
+
+[data-theme="dark"] .filter-btn:hover,
+[data-theme="dark"] .filter-btn.active {
+    background: #68d391;
+    border-color: #68d391;
+}
+
+[data-theme="dark"] .blog-card {
+    background: #2d3748;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+[data-theme="dark"] .blog-card:hover {
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+}
+
+[data-theme="dark"] .card-category {
+    background: #68d391;
+}
+
+[data-theme="dark"] .card-title {
+    color: #f7fafc;
+}
+
+[data-theme="dark"] .card-description {
+    color: #e2e8f0;
+}
+
+[data-theme="dark"] .read-more-btn {
+    background: linear-gradient(45deg, #68d391, #48bb78);
+}
+
+[data-theme="dark"] .load-more-btn {
+    background: linear-gradient(45deg, #38a169, #68d391);
+}
+
+[data-theme="dark"] .modal-content {
+    background-color: #2d3748;
+}
+
+[data-theme="dark"] .modal-header {
+    background: #2d3748;
+    border-bottom: 1px solid #4a5568;
+}
+
+[data-theme="dark"] .modal-title {
+    color: #38a169;
+}
+
+[data-theme="dark"] .modal-category {
+    background: #68d391;
+}
+
+[data-theme="dark"] .modal-text {
+    color: #f7fafc;
+}
+
+[data-theme="dark"] .modal-text h3 {
+    color: #38a169;
+}
+
+[data-theme="dark"] .close {
+    color: #a0aec0;
+}
+
+[data-theme="dark"] .close:hover,
+[data-theme="dark"] .close:focus {
+    color: #38a169;
+}
+
+[data-theme="dark"] .theme-toggle {
+    background: #2d3748;
+    color: #f7fafc;
+    border-color: #4a5568;
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+[data-theme="dark"] .favorites-link {
+    background: linear-gradient(135deg, #c0392b, #a93226);
+}
+
+[data-theme="dark"] .favorite-count {
+    background: #2d3748;
+    color: #e74c3c;
+}
+
+[data-theme="dark"] .favorite-btn {
+    background: rgba(45, 45, 45, 0.9);
+    color: #666;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+[data-theme="dark"] .favorite-btn:hover {
+    background: rgba(45, 45, 45, 1);
+}
+
+[data-theme="dark"] .favorite-btn.active {
+    color: #e74c3c;
+}
+
+[data-theme="dark"] .modal-favorite-btn {
+    background: rgba(45, 45, 45, 0.9);
+    color: #666;
+}
+
+[data-theme="dark"] .modal-favorite-btn:hover {
+    background: rgba(45, 45, 45, 1);
+    color: #e74c3c;
+}
+
+[data-theme="dark"] .blog-card {
+    background: linear-gradient(
+        145deg,
+        rgba(45, 55, 72, 0.95),
+        rgba(26, 32, 44, 0.95)
+    );
+    border: 1px solid rgba(104, 211, 145, 0.15);
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(6px);
+}
+
+[data-theme="dark"] .blog-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.8),
+        0 0 0 1px rgba(104, 211, 145, 0.3);
+}
+
+[data-theme="dark"] .blog-card img {
+    filter: brightness(0.85) contrast(1.05);
+    transition: filter 0.3s ease;
+}
+
+[data-theme="dark"] .blog-card:hover img {
+    filter: brightness(1) contrast(1.1);
+}
+
+[data-theme="dark"] .card-title {
+    color: #f8fafc;
+    font-weight: 600;
+}
+
+[data-theme="dark"] .card-description {
+    color: #cbd5e1;
+    line-height: 1.7;
+}
+
+[data-theme="dark"] .card-category {
+    background: linear-gradient(135deg, #68d391, #48bb78);
+    color: #0f172a;
+    box-shadow: 0 4px 15px rgba(104, 211, 145, 0.35);
+}
+
+[data-theme="dark"] .read-more-btn {
+    background: linear-gradient(135deg, #68d391, #38a169);
+    box-shadow: 0 6px 18px rgba(104, 211, 145, 0.4);
+}
+
+[data-theme="dark"] .read-more-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(104, 211, 145, 0.55);
+}
+
+[data-theme="dark"] .search-filter-section {
+    background: rgba(45, 55, 72, 0.95);
+    border: 1px solid rgba(104, 211, 145, 0.15);
+    backdrop-filter: blur(8px);
+}
+
+[data-theme="dark"] .search-bar {
+    background: rgba(26, 32, 44, 0.9);
+    border: 1px solid rgba(104, 211, 145, 0.25);
+}
+
+[data-theme="dark"] .search-bar:focus {
+    box-shadow: 0 0 0 3px rgba(104, 211, 145, 0.25);
+}
+
+[data-theme="dark"] .filter-btn {
+    background: rgba(74, 85, 104, 0.7);
+    border: 1px solid rgba(104, 211, 145, 0.25);
+}
+
+[data-theme="dark"] .filter-btn.active {
+    background: linear-gradient(135deg, #68d391, #38a169);
+    color: #0f172a;
+    box-shadow: 0 0 0 2px rgba(104, 211, 145, 0.3);
+}
+
+[data-theme="dark"] .filter-btn {
+    background: rgba(74, 85, 104, 0.7);
+    border: 1px solid rgba(104, 211, 145, 0.25);
+}
+
+[data-theme="dark"] .filter-btn.active {
+    background: linear-gradient(135deg, #68d391, #38a169);
+    color: #0f172a;
+    box-shadow: 0 0 0 2px rgba(104, 211, 145, 0.3);
+}
+
+[data-theme="dark"] .no-results {
+    background: rgba(104, 211, 145, 0.08);
+    color: #c6f6d5;
+}
+
+[data-theme="dark"] .no-results i {
+    color: #68d391;
+}
+
+
+/* Add transition for smooth theme switching */
+.agritech-blog,
+.search-filter-section,
+.blog-card,
+.modal-content,
+.modal-header,
+.search-bar,
+.filter-btn,
+.theme-toggle,
+.favorite-btn,
+.modal-favorite-btn {
+    transition: all 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .blog-title {
+        font-size: 2rem;
+    }
+    
+    .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .search-filter-section {
+        padding: 1.5rem;
+    }
+    
+    .category-filters {
+        gap: 0.5rem;
+    }
+    
+    .filter-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .header-actions {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    
+    .favorites-link {
+        align-self: flex-end;
+    }
+    
+    .favorite-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .modal-favorite-btn {
+        top: 15px;
+        right: 50px;
+        font-size: 1.3rem;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .agritech-blog {
+        padding: 1rem 0.5rem;
+    }
+    
+    .blog-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .blog-title {
+        font-size: 1.8rem;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 5% auto;
+    }
+    
+    .modal-header {
+        padding: 1.5rem;
+    }
+    
+    .modal-title {
+        font-size: 1.5rem;
+    }
+    
+    .modal-body {
+        padding: 1.5rem;
+    }
+    
+    .header-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .theme-toggle,
+    .favorites-link {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+
+/* =========================================
+   NEW FIXES: Modal & Metadata Styling
+   ========================================= */
+
+/* Metadata Row (Author & Date) */
+.modal-meta {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.9rem;
+    color: #94a3b8; /* Slate-400 for dark mode contrast */
+    margin-top: 5px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.modal-meta span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.modal-meta i {
+    color: #4CAF50; /* Green accent */
+}
+
+/* Scrollable Body Fix */
+.modal-body {
+    padding: 2rem;
+    max-height: 65vh; /* Prevents modal from being taller than screen */
+    overflow-y: auto; /* Adds scrollbar inside the modal if text is long */
+}
+
+/* Custom Scrollbar */
+.modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+/* Dark Mode Updates for New Elements */
+[data-theme="dark"] .modal-meta {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #a0aec0;
+}
+
+[data-theme="dark"] .modal-body::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .modal-body::-webkit-scrollbar-thumb {
+    background: #4a5568;
+}
+
+/* Style for Back to Home Button */
+    .home-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background-color: #17ac1e; /* AgriTech Green */
+        color: white;
+        text-decoration: none;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-weight: 500;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .home-btn:hover {
+        background-color: #1b5e20; /* Darker green on hover */
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    /* Ensure the header actions align properly */
+    .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+    .no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 4rem 2rem;
+    border-radius: 20px;
+    background: rgba(46, 204, 113, 0.08);
+    color: #2c5f2d;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.no-results i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #27ae60;
+}
+
+.no-results h3 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+}
+
+.no-results p {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.no-results span {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- NEW SCROLL TO TOP BUTTON STYLING (REPLACED ORIGINAL) --- */
+#scrollTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    /* Brand-consistent Green Gradient */
+    background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
+    color: white;
+    border: none;
+    border-radius: 50%; /* Modern Circular Aesthetic */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    /* Animated Interaction Logic */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Visibility logic triggered by JS classList */
+#scrollTopBtn.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Smooth Hover Lift Effect */
+#scrollTopBtn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(46, 125, 50, 0.4);
+}
+
+#scrollTopBtn:active {
+    transform: translateY(0);
+}
