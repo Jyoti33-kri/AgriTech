@@ -54,7 +54,7 @@ recommendations, yield prediction, plant disease detection, and community-driven
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/omroy07/AgriTech.git
+git clone https://https://github.com/Jyoti33-kri/AgriTech
 cd AgriTech
 ```
 
