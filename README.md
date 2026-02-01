@@ -105,7 +105,10 @@ Note: Backend and frontend must be running simultaneously for proper functionali
 ![image alt]( https://github.com/Jyoti33-kri/AgriTech/blob/18483f8da471cd22f269c811ce594ca171e4b322/image.png)
 
 ![image alt]( https://github.com/Jyoti33-kri/AgriTech/blob/c738d2435336335b9bcdf92821bedd7d3639eb8e/image1.png)
+
 ![image alt]( https://github.com/Jyoti33-kri/AgriTech/blob/014a18ad733f0b8dce12dcc9d5c330506d81e673/image2.png)
+
+![image alt]( https://github.com/Jyoti33-kri/AgriTech/blob/e362d9e4245d84f7a0a8efb13e26e6f3ec530156/1a.jpeg)
 
 ---
 
