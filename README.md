@@ -221,7 +221,6 @@ AGRITECH/
 ├── 📁 Community/               # 💬 community/forum backend
 ├── 📁 images/                  # 📸 Screenshots and assets
 ├── 📄 README.md                # This file
-└── 
 ```
 
 ---
