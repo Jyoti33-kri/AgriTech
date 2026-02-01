@@ -225,7 +225,7 @@ AGRITECH/
 ├── 📁 Community/               # 💬 community/forum backend
 ├── 📁 images/                  # 📸 Screenshots and assets
 ├── 📄 README.md                # This file
-└──         
+└── 📄 CONTRIBUTING.md          # Contribution guidelines
 ```
 
 ---
@@ -269,7 +269,42 @@ FIREBASE_MEASUREMENT_ID=your_measurement_id
 - ~~AI Chatbot~~ ✅ **COMPLETED**
 - Multilingual Support
 
+---
 
+## 🤝 Contribution Flow
+
+```bash
+Fork → Clone → Branch → Commit → Push → Pull Request → Review → Merge
+```
+
+Read **[CONTRIBUTING.md](CONTRIBUTING.md)** for SWoC 2026 guidelines.
+
+---
+
+## 👥 Team
+
+| Name                    | Role                    |
+| ----------------------- | ----------------------- |
+| Om Roy                  | Project Lead · Web · ML |
+| Shubhangi Roy           | ML · Backend            |
+
+---
+
+## 🤝 Contributing & Support
+
+We love contributions! Please read our **[CONTRIBUTING.md](./CONTRIBUTING.md)** to get started with **SWoC 2026** tasks. Whether it's fixing bugs, adding features, or improving documentation, your help is always welcome!
+
+---
+
+## ✨ Contributors
+
+#### Thanks to all the wonderful people contributing to this project! 💖
+
+![Contributors](https://contrib.rocks/image?repo=omroy07/AgriTech)
+
+[View full contribution graph](https://github.com/omroy07/AgriTech/graphs/contributors)
+
+---
 
 For production use, run the backend with a WSGI server like [gunicorn](https://gunicorn.org/):
 
@@ -313,3 +348,23 @@ This project is licensed under the [MIT License](LICENSE).
 - ❌ **Port already in use**
   👉 Change port in `app.py` or stop previous process
 
+## ❓ FAQ
+
+**Q: The project is not running. What should I do?**
+A: Make sure all Python dependencies are installed, the .env file is properly configured, and the correct API keys are being used.
+
+**Q: How do I get a Gemini/Firebase API key?**
+A: Refer to the “API Keys Guide” section above for step-by-step instructions.
+
+**Q: I am seeing the warning “This is a development server…” on the Flask server. What does it mean?**
+A: This server is intended only for development. For production, use a WSGI server such as Gunicorn.
+
+**Q: I accidentally pushed my .env file. What should I do?**
+A: Immediately rotate/regenerate your API keys, remove the .env file from Git tracking, add it to .gitignore, and clean the repository history if required.
+
+**Q: The /health endpoint is not responding. What could be wrong?**
+A: Ensure the backend server is running correctly and that the /health route is properly implemented.
+
+---
+
+**Made with ❤️ by the AgriTech Community — SWoC 2026**
