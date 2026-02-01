@@ -1,4 +1,5 @@
 # 🌱 AgriTech — Smart Farming Solutions
+![Uploading image.png…]()
 
 ![AgriTech Banner](images/plant.png)
 
