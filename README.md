@@ -271,34 +271,7 @@ FIREBASE_MEASUREMENT_ID=your_measurement_id
 
 ---
 
-## 🤝 Contribution Flow
 
-```bash
-Fork → Clone → Branch → Commit → Push → Pull Request → Review → Merge
-```
-
-Read **[CONTRIBUTING.md](CONTRIBUTING.md)** for SWoC 2026 guidelines.
-
----
-
-## 👥 Team
-
-| Name                    | Role                    |
-| ----------------------- | ----------------------- |
-| Om Roy                  | Project Lead · Web · ML |
-| Shubhangi Roy           | ML · Backend            |
-
----
-
-## 🤝 Contributing & Support
-
-We love contributions! Please read our **[CONTRIBUTING.md](./CONTRIBUTING.md)** to get started with **SWoC 2026** tasks. Whether it's fixing bugs, adding features, or improving documentation, your help is always welcome!
-
----
-
-## ✨ Contributors
-
-#### Thanks to all the wonderful people contributing to this project! 💖
 
 ![Contributors](https://contrib.rocks/image?repo=omroy07/AgriTech)
 
@@ -348,7 +321,3 @@ This project is licensed under the [MIT License](LICENSE).
 - ❌ **Port already in use**
   👉 Change port in `app.py` or stop previous process
 
-## ❓ FAQ
-
-**Q: The project is not running. What should I do?**
-A: Make sure all Python dependencies are installed, the .env file is properly configured, and the correct API keys are being used.
