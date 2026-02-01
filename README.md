@@ -102,8 +102,7 @@ Note: Backend and frontend must be running simultaneously for proper functionali
 
 ## 🖥️ Application Preview
 
-<img src="images/image1.png"
-       alt="AgriTech Dashboard" width="100%" />
+![image alt]( https://github.com/Jyoti33-kri/AgriTech/blob/18483f8da471cd22f269c811ce594ca171e4b322/image.png)
 <img src="images/image.png"
        alt="AgriTech Dashboard" width="100%" />
 
