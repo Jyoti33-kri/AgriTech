@@ -1,14 +1,21 @@
 🌱 AgriTech — Smart Farming Solutions
+
 AgriTech Banner
 
 SWoC 2026 License: MIT PRs Welcome
 
 📚 Table of Contents
+
 Overview
+
 Quick Start
+
 Application Preview
+
 System Architecture
+
 Core Features
+
 Tech Stack
 Project Structure
 Backend vs Frontend
