@@ -3,7 +3,7 @@
 ![image alt](https://github.com/Jyoti33-kri/AgriTech/blob/0f25ebf851712c440e95c88d232308daac009efa/logo.png)
 
 [![SWoC 2026](https://img.shields.io/badge/SWoC-2026-blue?style=for-the-badge)](https://swoc.tech)
-[![License: MIT](https://github.com/Jyoti33-kri/AgriTech/blob/26e44d2e9a56372d68be13d07a16247f39983b64/LICENSE.mdhttps://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+[![License: MIT](https://github.com/Jyoti33-kri/AgriTech/blob/26e44d2e9a56372d68be13d07a16247f39983b64/LICENSE.mdhttps://img.shields.io/badge/License-MIT-green?style=for-the-badge)]
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen?style=for-the-badge)](CONTRIBUTING.md)
 
 ---
