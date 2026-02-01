@@ -1,185 +1,110 @@
-const USE_AI_FALLBACK = true;
+const socket = io();
 
-// Rule-based fallback responses (offline mode)
-const RULE_BASED_FALLBACKS = {
-  soil: "Healthy soil is essential for good yields. Add organic compost, avoid excessive chemical use, and test soil regularly.",
-  crop: "Crop management involves selecting suitable crops for the season, timely sowing, and monitoring pests and diseases.",
-  crops: "Proper crop care includes crop rotation, pest control, balanced fertilization, and timely irrigation.",
-  water: "Efficient water management includes drip or sprinkler irrigation and avoiding overwatering.",
-  irrigation: "Irrigation should be scheduled based on crop growth stage and soil moisture levels.",
-  fertilizer: "Fertilizers should be applied based on soil test results. Overuse can damage crops and soil health."
-};
+let username = "";
+let currentCommunity = "";
 
-const DEFAULT_FALLBACK_MESSAGE =
-  "I’m currently running in offline mode. Here’s some general advice: focus on soil health, proper irrigation, and timely crop care.";
+function fetchCommunities() {
+  fetch("/communities")
+    .then(res => res.json())
+    .then(communities => {
+      const list = document.getElementById('communitiesList');
+      list.innerHTML = "";
+      communities.forEach(comm => {
+        let li = document.createElement("li");
+        li.textContent = comm;
+        li.onclick = () => joinCommunity(comm);
+        list.appendChild(li);
+      });
+    });
+}
 
-document.addEventListener('DOMContentLoaded', () => {
-  // --- BUG FIX: DYNAMIC COPYRIGHT YEAR ---
-  const yearElement = document.getElementById('current-year');
-  if (yearElement) {
-    yearElement.textContent = new Date().getFullYear();
-  }
+function addCommunity() {
+  const room = document.getElementById('newCommunityName').value.trim();
+  if (!room) return;
+  fetch("/add_community", {
+    method: "POST",
+    headers: { 'Content-Type': "application/json" },
+    body: JSON.stringify({ room })
+  })
+    .then(res => res.json())
+    .then(d => {
+      fetchCommunities();
+      document.getElementById('newCommunityName').value = "";
+    });
+}
 
-  const chatWindow = document.getElementById('chat-window');
-  const chatForm = document.getElementById('chat-form');
-  const chatInput = document.getElementById('chat-input');
-  const sendBtn = document.getElementById('send-button');
-
-  // Initialize JSON-based chatbot
-  const jsonChatbot = new JSONChatbot();
-
-  // HTML escaping function to prevent XSS
-  function escapeHtml(text) {
-    return text
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#x27;');
-  }
-
-  // Secure message rendering
-  function displayMessage(messageContent, sender) {
-    const messageElement = document.createElement('div');
-    messageElement.className = `message ${sender}`;
-
-    const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    const name = sender === 'user' ? 'You' : 'AgriBot';
-
-    const headerDiv = document.createElement('div');
-    headerDiv.className = 'message-header';
-
-    const icon = document.createElement('i');
-    icon.className = `fas fa-${sender === 'user' ? 'user' : 'robot'}`;
-    headerDiv.appendChild(icon);
-    headerDiv.appendChild(document.createTextNode(` ${name}`));
-
-    const textDiv = document.createElement('div');
-    textDiv.className = 'message-text';
-    textDiv.innerHTML = format(escapeHtml(messageContent));
-
-    const timeDiv = document.createElement('div');
-    timeDiv.className = 'timestamp';
-    timeDiv.textContent = time;
-
-    messageElement.appendChild(headerDiv);
-    messageElement.appendChild(textDiv);
-    messageElement.appendChild(timeDiv);
-
-    chatWindow.appendChild(messageElement);
-    chatWindow.scrollTop = chatWindow.scrollHeight;
-  }
-
-  document.addEventListener('click', (e) => {
-    if (e.target.classList.contains('suggestion')) {
-      chatInput.value = e.target.textContent;
-      chatForm.dispatchEvent(new Event('submit'));
-    }
-  });
-
-  chatForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const input = chatInput.value.trim();
-
-    if (!input && !window.selectedImageBase64) return;
-
-    if (input.length > 1000) {
-      alert('Message too long. Please keep messages under 1000 characters.');
-      return;
-    }
-
-    displayMessage(input || "Analyzing uploaded image...", 'user');
-    chatInput.value = '';
-
-    const typing = showTyping();
-    toggleInput(true);
-
-    try {
-      let reply = "";
-
-      if (USE_AI_FALLBACK && (window.selectedImageBase64 || input)) {
-        const res = await fetch("/api/chat", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            message: input || "Identify crop and disease from image.",
-            image: window.selectedImageBase64 || null
-          })
-        });
-
-        if (res.ok) {
-          const data = await res.json();
-          reply = data.reply || DEFAULT_FALLBACK_MESSAGE;
-        } else {
-          // Rule-based fallback on API failure
-          const lowerInput = input.toLowerCase();
-          reply = DEFAULT_FALLBACK_MESSAGE;
-
-          for (const keyword in RULE_BASED_FALLBACKS) {
-            if (lowerInput.includes(keyword)) {
-              reply = RULE_BASED_FALLBACKS[keyword];
-              break;
-            }
-          }
-        }
+function deleteCommunity() {
+  if (!currentCommunity) return;
+  fetch("/delete_community", {
+    method: "POST",
+    headers: { 'Content-Type': "application/json" },
+    body: JSON.stringify({ room: currentCommunity })
+  })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        alert("Community deleted!");
       } else {
-        reply = await jsonChatbot.getResponse(input);
+        alert("Community not deleted (may not be empty)! " + (data.error || ""));
       }
+      leaveCommunity();
+      fetchCommunities();
+    });
+}
 
-      setTimeout(() => {
-        displayMessage(reply, 'bot');
-        if (typeof clearImage === "function") clearImage();
-      }, 600);
+function joinCommunity(room) {
+  username = document.getElementById('username').value.trim();
+  if (!username) {
+    alert("Enter your name first");
+    return;
+  }
+  if (currentCommunity) {
+    socket.emit('leave', { username, room: currentCommunity });
+  }
+  document.getElementById('chatWindow').innerHTML = "";
+  document.getElementById('chatDiv').style.display = 'block';
+  document.getElementById('communityDiv').style.display = 'none';
+  document.getElementById('currentCommunity').textContent = "Community: " + room;
+  currentCommunity = room;
+  socket.emit('join', { username, room });
+  document.getElementById('deleteBtn').style.display = "block";
+}
 
-    } catch (error) {
-      console.error('Chatbot Error:', error);
+function leaveCommunity() {
+  if (!currentCommunity) return;
+  socket.emit('leave', { username, room: currentCommunity });
+  document.getElementById('chatDiv').style.display = 'none';
+  document.getElementById('communityDiv').style.display = 'block';
+  currentCommunity = "";
+  document.getElementById('userList').innerHTML = "";
+}
 
-      const lowerInput = input.toLowerCase();
-      let fallbackReply = DEFAULT_FALLBACK_MESSAGE;
+function sendMessage() {
+  const msgInput = document.getElementById('chatInput');
+  const msg = msgInput.value.trim();
+  if (msg && currentCommunity) {
+    socket.emit('message', { username, room: currentCommunity, msg });
+    msgInput.value = "";
+  }
+}
 
-      for (const keyword in RULE_BASED_FALLBACKS) {
-        if (lowerInput.includes(keyword)) {
-          fallbackReply = RULE_BASED_FALLBACKS[keyword];
-          break;
-        }
-      }
-
-      displayMessage(fallbackReply, 'bot');
-    } finally {
-      setTimeout(() => {
-        typing.remove();
-        toggleInput(false);
-      }, 800);
-    }
-  });
-
-  const showTyping = () => {
-    const typing = document.createElement('div');
-    typing.className = 'typing-indicator';
-    typing.innerHTML = `<div>AgriBot is typing</div><span></span><span></span><span></span>`;
-    chatWindow.appendChild(typing);
-    chatWindow.scrollTop = chatWindow.scrollHeight;
-    return typing;
-  };
-
-  const toggleInput = (disable) => {
-    sendBtn.disabled = disable;
-    chatInput.disabled = disable;
-    if (!disable) chatInput.focus();
-  };
-
-  const format = (txt) =>
-    txt.replace(/\n/g, '<br>')
-       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-       .replace(/\*(.*?)\*/g, '<em>$1</em>')
-       .replace(/`(.*?)`/g, '<code>$1</code>');
-
-  setTimeout(() => {
-    displayMessage(
-      "Hello! 🌱 I'm AgriBot, your AI assistant for AgriTech platform and farming guidance. I can help you navigate our tools, answer agriculture questions, recommend crops based on your region and season, and provide farming advice. How can I assist you today?",
-      'bot'
-    );
-  }, 500);
-
-  chatInput.focus();
+socket.on('message', data => {
+  const chatWindow = document.getElementById('chatWindow');
+  let msgDiv = document.createElement('div');
+  msgDiv.textContent = data.msg;
+  chatWindow.appendChild(msgDiv);
+  chatWindow.scrollTop = chatWindow.scrollHeight;
 });
+
+socket.on('user_list', users => {
+  const userList = document.getElementById('userList');
+  userList.innerHTML = '';
+  users.forEach(user => {
+    const li = document.createElement('li');
+    li.textContent = user;
+    userList.appendChild(li);
+  });
+});
+
+// Initial load
+window.onload = fetchCommunities;
