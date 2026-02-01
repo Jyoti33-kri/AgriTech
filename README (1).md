@@ -21,15 +21,10 @@
 - [Security & Reliability](#-security--reliability)
 - [Environment Variables](#️-environment-variables)
 - [Roadmap](#-roadmap)
-- [Contribution Flow](#-contribution-flow)
-- [Team](#-team)
-- [Contributing & Support](#-contributing--support)
-- [Contributors](#-contributors)
 - [Production Deployment](#-production-deployment)
 - [API Keys Guide](#-api-keys-guide)
 - [Reporting Issues](#-reporting-issues)
 - [License](#-license)
-- [FAQ](#-faq)
 
 ---
 
