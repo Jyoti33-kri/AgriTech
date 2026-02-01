@@ -1,7 +1,5 @@
 # 🌱 AgriTech — Smart Farming Solutions
 
-![AgriTech Banner](images/plant.png)
-
 [![SWoC 2026](https://img.shields.io/badge/SWoC-2026-blue?style=for-the-badge)](https://swoc.tech)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen?style=for-the-badge)](CONTRIBUTING.md)
@@ -21,15 +19,11 @@
 - [Security & Reliability](#-security--reliability)
 - [Environment Variables](#️-environment-variables)
 - [Roadmap](#-roadmap)
-- [Contribution Flow](#-contribution-flow)
-- [Team](#-team)
-- [Contributing & Support](#-contributing--support)
-- [Contributors](#-contributors)
 - [Production Deployment](#-production-deployment)
 - [API Keys Guide](#-api-keys-guide)
 - [Reporting Issues](#-reporting-issues)
 - [License](#-license)
-- [FAQ](#-faq)
+
 
 ---
 
