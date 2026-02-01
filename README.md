@@ -104,7 +104,7 @@ Note: Backend and frontend must be running simultaneously for proper functionali
 
 ---
 
-## 🖥️ Application Preview
+## 🖥️ Application Preview 
 
 <img src="images/image1.png"
        alt="AgriTech Dashboard" width="100%" />
@@ -115,7 +115,6 @@ Note: Backend and frontend must be running simultaneously for proper functionali
        alt="AgriTech Dashboard" width="100%" />
 <img src="images/image3.png"
        alt="AgriTech Dashboard" width="100%" />
-
 ---
 
 ## 🏗️ System Architecture
@@ -225,7 +224,7 @@ AGRITECH/
 ├── 📁 Community/               # 💬 community/forum backend
 ├── 📁 images/                  # 📸 Screenshots and assets
 ├── 📄 README.md                # This file
-└── 📄 CONTRIBUTING.md          # Contribution guidelines
+          
 ```
 
 ---
