@@ -1,7 +1,7 @@
 # 🌱 AgriTech — Smart Farming Solutions
-![Uploading image.png…]()
 
 ![AgriTech Banner](images/plant.png)
+
 
 [![SWoC 2026](https://img.shields.io/badge/SWoC-2026-blue?style=for-the-badge)](https://swoc.tech)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
