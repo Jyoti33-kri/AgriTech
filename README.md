@@ -2,6 +2,10 @@
 
 ![image alt](https://github.com/Jyoti33-kri/AgriTech/blob/0f25ebf851712c440e95c88d232308daac009efa/logo.png)
 
+#Agritech website: check it out 👉🏻
+https://agri-tech-6rs5.vercel.app/
+
+
 ---
 
 ## 📚 Table of Contents
