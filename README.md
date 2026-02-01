@@ -273,11 +273,7 @@ FIREBASE_MEASUREMENT_ID=your_measurement_id
 
 
 
-![Contributors](https://contrib.rocks/image?repo=omroy07/AgriTech)
 
-[View full contribution graph](https://github.com/omroy07/AgriTech/graphs/contributors)
-
----
 
 For production use, run the backend with a WSGI server like [gunicorn](https://gunicorn.org/):
 
